@@ -24,7 +24,7 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
 
 
 
-
+// Affichage de l'heure en temps réel dans le HTML
 
 function fcinq(){
     let i = 1000;
@@ -54,22 +54,15 @@ function clock(){
 }
 clock()
 
-
-
-
-
-
-
-
-
-
-
+// Récupère la date et l'heure
 
 function timer() {
     let heure = new Date();
     let date = heure.toLocaleDateString('fr');    
     return [date]
 }
+
+// Affichage de la date et de l'heure dans le HTML
 
 document.getElementById("time").innerHTML = "Aujourd'hui nous sommes le " + timer()[0]
 

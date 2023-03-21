@@ -14,7 +14,44 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
         console.log(data)
     })
     .catch(err => console.log("rejected\n", err.message))
+    
 
 
-// Récupération de la température
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//function timer() {
+    
+    let heure = new Date();
+    let hours = heure.getHours() + ":" + heure.getMinutes();
+    //document.getElementById("hours")
+    console.log(hours);
+
+//}
+
+//timer()
+
+
+
+
+
+
+
+
+
+
 

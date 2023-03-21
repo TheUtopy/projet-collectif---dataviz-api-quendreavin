@@ -12,6 +12,11 @@ const getWeather = async (url) => {
 getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
     .then(data => {
         console.log(data)
+        const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
+        const temperature = data.hourly.temperature_2m[hourlyIndex]
+        const precipitation = data.hourly.precipitation[hourlyIndex]
+        const weathercode = data.hourly.weathercode[hourlyIndex]
+        console.log(weathercode, temperature, precipitation)
     })
     .catch(err => console.log("rejected\n", err.message))
     
@@ -68,12 +73,28 @@ function timer() {
 
 document.getElementById("time").innerHTML = "Aujourd'hui nous sommes le " + timer()[0]
 
+// Mettre date et heure actuelle au format du json
+// Il faut aussi arrondir l'heure (floor)
+
+//2023-03-21T00:00
+
+function formatDateAndTime(dateAndTime=timer()) {
+    let date = dateAndTime[0].split("/")
+    let time = dateAndTime[1].split(":")
+    time = time[0]
+    dateAndTime = date[2] + "-" + date[1] + "-" + date[0] + "T" + time +":00"
+    return dateAndTime
+} 
+
+// Depuis les datas en json, retourne l'index des datas à l'heure actuelle
+// Ce qui permet ensuite d'aller retrouver la température, etc depuis l'index
+
+function returnIndexOfDate(data, currentDateAndTime) {
+    return data.hourly.time.indexOf(currentDateAndTime)
+}
 
 
 
 
 
-
-
-
-
+ 

@@ -34,18 +34,18 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
 
 
 
-//function timer() {
-    
+function timer() {
     let heure = new Date();
     let hours = heure.getHours() + ":" + heure.getMinutes();
     let date = heure.toLocaleDateString('fr')
     console.log(date)
-    //document.getElementById("hours")
     console.log(hours);
+    return date
+    
+}
+timer()
 
-//}
-
-//timer()
+document.getElementById("time").innerHTML = "Aujourd'hui nous sommes le " + timer()
 
 
 

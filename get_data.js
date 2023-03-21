@@ -21,14 +21,48 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
     .catch(err => console.log("rejected\n", err.message))
     
 
-// Récupération données de l'heure et la date
+
+
+
+// Affichage de l'heure en temps réel dans le HTML
+
+function fcinq(){
+    let i = 1000;
+    setTimeout('clock()', i)
+}
+
+function clock(){
+    let heure = new Date
+    let hours = heure.getHours();
+    let min = heure.getMinutes();
+    let sec = heure.getSeconds();
+
+    if (hours < 10){
+        hours = "0" + hours
+    }
+    if (min < 10){
+        min = "0" + min
+    }
+    if (sec < 10){
+        sec = "0" + sec
+    }
+    let horloge = hours + ":" + min + ":" + sec
+
+    
+    document.getElementById("temps").innerHTML = horloge
+    fcinq()
+}
+clock()
+
+// Récupère la date et l'heure
 
 function timer() {
     let heure = new Date();
-    let hours = heure.getHours() + ":" + heure.getMinutes();
-    let date = heure.toLocaleDateString('fr');
-    return [date, hours]
+    let date = heure.toLocaleDateString('fr');    
+    return [date]
 }
+
+// Affichage de la date et de l'heure dans le HTML
 
 document.getElementById("time").innerHTML = "Aujourd'hui nous sommes le " + timer()[0]
 document.getElementById("hour").innerHTML = " Il est " + timer()[1]

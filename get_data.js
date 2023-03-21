@@ -36,6 +36,8 @@ getTodos("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.
     
     let heure = new Date();
     let hours = heure.getHours() + ":" + heure.getMinutes();
+    let date = heure.toLocaleDateString('fr')
+    console.log(date)
     //document.getElementById("hours")
     console.log(hours);
 

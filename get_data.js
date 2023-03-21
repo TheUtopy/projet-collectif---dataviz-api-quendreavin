@@ -58,14 +58,14 @@ clock()
 
 function timer() {
     let heure = new Date();
-    let date = heure.toLocaleDateString('fr');    
-    return [date]
+    let hours = heure.getHours() + ":" + heure.getMinutes();
+    let date = heure.toLocaleDateString('fr');
+    return [date, hours]
 }
 
 // Affichage de la date et de l'heure dans le HTML
 
 document.getElementById("time").innerHTML = "Aujourd'hui nous sommes le " + timer()[0]
-document.getElementById("hour").innerHTML = " Il est " + timer()[1]
 
 // Mettre date et heure actuelle au format du json
 // Il faut aussi arrondir l'heure (floor)

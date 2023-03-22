@@ -115,8 +115,16 @@ function sunset(data) {
 
 function isItDay(sunrise=sunrise(data), sunset=sunset(data), time=timer()[1]) {
     time = time.split(":")
-    
-    return time
+    time = [parseInt(time[0]), parseInt(time[1])]
+    if (time[0] < sunrise[0] || time[0] > sunset[0]) {
+        return false
+    } else if (time[0] == sunrise[0] && time[1] < sunrise[1]){
+        return false
+    } else if (time[0] == sunset[0] && time[1] > sunset[1]) {
+        return false
+    } else {
+        return true
+    }
 }
 
 

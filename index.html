@@ -5,14 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Météo Nantaise</title>
+    <link rel="icon" href="images/icone.png">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body onload=clock()>
-    <p id="time"></p>
-    <span id="temps"></span>
-    <p id="temperature"></p>
-    <p id="precip"></p>
+    <p id="date"></p>
+    <span id="horloge"></span>
+    <div class="bidule"></div>
+    
+    <div id="truc">
+        <p id="temperature"></p>
+        <p id="precipitation"></p>
+    </div>
     <script src="get_data.js"></script>
     <script language="javascript" src="https://www.ephemeride.com/free/ephem.jsp?css=perso" charset="iso-8859-1"></script>
     

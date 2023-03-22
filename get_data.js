@@ -18,8 +18,8 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
         const weathercode = data.hourly.weathercode[hourlyIndex]
         console.log(weathercode, temperature, precipitation)
         console.log(isItDay(sunrise(data), sunset(data)))
-        document.getElementById("temperature").innerHTML = "il fait " + temperature + "°C"
-        document.getElementById("precip").innerHTML = "il est prévu " + precipitation + "mm de pluie"
+        document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
+        document.getElementById("precipitation").innerHTML = "Il est prévu " + precipitation + "mm de pluie"
     })
     .catch(err => console.log("rejected\n", err.message))
     
@@ -52,7 +52,7 @@ function clock(){
     let horloge = hours + ":" + min + ":" + sec
 
     
-    document.getElementById("temps").innerHTML = horloge
+    document.getElementById("horloge").innerHTML = horloge
     fcinq()
 }
 clock()
@@ -68,7 +68,7 @@ function timer() {
 
 // Affichage de la date et de l'heure dans le HTML
 
-document.getElementById("time").innerHTML = "Aujourd'hui nous sommes le " + timer()[0]
+document.getElementById("date").innerHTML = "Aujourd'hui nous sommes le " + timer()[0]
 
 // Mettre date et heure actuelle au format du json
 // Il faut aussi arrondir l'heure (floor)

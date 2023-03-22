@@ -1,3 +1,5 @@
+
+
 const getWeather = async (url) => {
     const response = await fetch(url);
 
@@ -11,18 +13,25 @@ const getWeather = async (url) => {
 
 getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
     .then(data => {
-        console.log(data)
-        const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
-        const temperature = data.hourly.temperature_2m[hourlyIndex]
-        const precipitation = data.hourly.precipitation[hourlyIndex]
-        const weathercode = data.hourly.weathercode[hourlyIndex]
-        console.log(weathercode, temperature, precipitation)
-        console.log(isItDay(sunrise(data), sunset(data)))
-        document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
-        document.getElementById("precipitation").innerHTML = "Il est prévu " + precipitation + "mm de pluie"
+        truc(data);
     })
     .catch(err => console.log("rejected\n", err.message))
     
+function truc(data) {
+    console.log(data)
+    const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
+    let temperature = data.hourly.temperature_2m[hourlyIndex]
+    let precipitation = data.hourly.precipitation[hourlyIndex]
+    let weathercode = data.hourly.weathercode[hourlyIndex]
+    console.log(weathercode, temperature, precipitation)
+    console.log(isItDay(sunrise(data), sunset(data)))
+
+    //affichage de la temperature et de la precipitation
+    document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
+    document.getElementById("precipitation").innerHTML = "Il est prévu " + precipitation + "mm de pluie"
+
+    
+}
 
 
 
@@ -33,6 +42,10 @@ function fcinq(){
     let i = 1000;
     setTimeout('clock()', i)
 }
+
+let heureActuelle = new Date;
+heureActuelle = heureActuelle.getHours()
+//console.log(heureActuelle)
 
 function clock(){
     let heure = new Date
@@ -54,6 +67,15 @@ function clock(){
     
     document.getElementById("horloge").innerHTML = horloge
     fcinq()
+    
+    if (heureActuelle != parseInt(hours)){
+        heureActuelle = hours
+        getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
+            .then(data => {
+                truc(data);
+            })
+            .catch(err => console.log("rejected\n", err.message))
+    }
 }
 clock()
 

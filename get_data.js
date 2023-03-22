@@ -18,6 +18,8 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
         const weathercode = data.hourly.weathercode[hourlyIndex]
         console.log(weathercode, temperature, precipitation)
         console.log(isItDay(sunrise(data), sunset(data)))
+        document.getElementById("temperature").innerHTML = "il fait " + temperature + "°C"
+        document.getElementById("precip").innerHTML = "il est prévu " + precipitation + "mm de pluie"
     })
     .catch(err => console.log("rejected\n", err.message))
     

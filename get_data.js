@@ -26,6 +26,7 @@ function traitementDesDonnées(data) {
     console.log(weathercode, temperature, precipitation)
     console.log(isItDay(sunrise(data), sunset(data)))
     console.log(whichImageWeathercode(weathercode))
+    arrierePlan(sunrise(data), sunset(data))
 
     //affichage de la temperature et de la precipitation
     document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
@@ -180,4 +181,17 @@ function whichImageWeathercode(weathercode){
 
 
 
- 
+function arrierePlan(sunrise, sunset){
+
+
+    if (isItDay(sunrise, sunset)) {
+        return document.querySelector(".ciel").innerHTML = "<img src=\"images/cielNuit.png\">"
+    } else {
+        return document.querySelector(".ciel").innerHTML = "<img src=\"images/cielNuit.png\">"
+    }
+        
+        
+}
+
+
+    

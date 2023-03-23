@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(44, 158, 178);
+  background-image: url('images/day.png');
 }
 
 #horloge {
@@ -36,4 +36,12 @@ body {
 
 center {
   display: none;
+}
+
+.day {
+  background-image: url("images/day.png");
+}
+
+.night {
+  background-image: url("images/cielNuit.png");
 }

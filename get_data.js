@@ -13,11 +13,11 @@ const getWeather = async (url) => {
 
 getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
     .then(data => {
-        truc(data);
+        traitementDesDonnées(data);
     })
     .catch(err => console.log("rejected\n", err.message))
     
-function truc(data) {
+function traitementDesDonnées(data) {
     console.log(data)
     const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
     let temperature = data.hourly.temperature_2m[hourlyIndex]
@@ -36,18 +36,18 @@ function truc(data) {
 
 
 
-// Affichage de l'heure en temps réel dans le HTML
+// Affichage de l'heure en temps réel dans le HTML et actualisation de l'affichage des données de l'API
 
-function fcinq(){
+function tempsDeRaffraichissement(){
     let i = 1000;
-    setTimeout('clock()', i)
+    setTimeout('actualisation()', i)
 }
 
 let heureActuelle = new Date;
 heureActuelle = heureActuelle.getHours()
 //console.log(heureActuelle)
 
-function clock(){
+function actualisation(){
     let heure = new Date
     let hours = heure.getHours();
     let min = heure.getMinutes();
@@ -66,22 +66,21 @@ function clock(){
 
     
     document.getElementById("horloge").innerHTML = horloge
-    fcinq()
+    tempsDeRaffraichissement()
     
     if (heureActuelle != parseInt(hours)){
         heureActuelle = hours
         getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
             .then(data => {
-                truc(data);
+                traitementDesDonnées(data);
             })
             .catch(err => console.log("rejected\n", err.message))
     }
 }
-clock()
 
 // Récupère la date et l'heure
 
-function timer() {
+function getDateAndTime() {
     let heure = new Date();
     let hours = heure.getHours() + ":" + heure.getMinutes();
     let date = heure.toLocaleDateString('fr');
@@ -90,14 +89,14 @@ function timer() {
 
 // Affichage de la date et de l'heure dans le HTML
 
-document.getElementById("date").innerHTML = "Aujourd'hui nous sommes le " + timer()[0]
+document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
 
 // Mettre date et heure actuelle au format du json
 // Il faut aussi arrondir l'heure (floor)
 
 //2023-03-21T00:00
 
-function formatDateAndTime(dateAndTime=timer()) {
+function formatDateAndTime(dateAndTime=getDateAndTime()) {
     let date = dateAndTime[0].split("/")
     let time = dateAndTime[1].split(":")
     time = time[0]
@@ -137,7 +136,7 @@ function sunset(data) {
 
 // Fonction qui retourne si il fait jour ou non
 
-function isItDay(sunrise=sunrise(data), sunset=sunset(data), time=timer()[1]) {
+function isItDay(sunrise=sunrise(data), sunset=sunset(data), time=getDateAndTime()[1]) {
     time = time.split(":")
     time = [parseInt(time[0]), parseInt(time[1])]
     if (time[0] < sunrise[0] || time[0] > sunset[0]) {

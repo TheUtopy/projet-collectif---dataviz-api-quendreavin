@@ -25,6 +25,7 @@ function truc(data) {
     let weathercode = data.hourly.weathercode[hourlyIndex]
     console.log(weathercode, temperature, precipitation)
     console.log(isItDay(sunrise(data), sunset(data)))
+    console.log(whichImageWeathercode(weathercode))
 
     //affichage de la temperature et de la precipitation
     document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
@@ -151,6 +152,32 @@ function isItDay(sunrise=sunrise(data), sunset=sunset(data), time=timer()[1]) {
     }
 }
 
+// Fonction d'affichage image en fonction du weathercode
+
+function whichImageWeathercode(weathercode){
+    let wCode= weathercode
+    if (wCode == 0) {
+        return document.querySelector(".image").innerHTML = "<img src=\"images/Soleil.png\">"
+    } else if ((wCode == 1) || (wCode == 2) || (wCode == 3)){
+        return document.querySelector(".image").innerHTML = "<img src=\"images/BeauCouvert.png\">"
+    } else if ((wCode == 45) || (wCode == 48)) {
+        return document.querySelector(".image").innerHTML = "<img src=\"images/Brumeux.png\">"
+    } else if ((wCode == 51) || (wCode == 53) || (wCode == 55)) {
+        return document.querySelector(".image").innerHTML = "<img src=\"images/PluieFine.png\">"
+    } else if ((wCode == 61) || (wCode == 63) || (wCode == 65)) {
+        return document.querySelector(".image").innerHTML = "<img src=\"images/Pluvieux.png\">"
+    } else if ((wCode == 66) || (wCode == 67)) {
+        return document.querySelector(".image").innerHTML = "<img src=\"images/PluieVerglacante.png\">"
+    } else if ((wCode == 71) || (wCode == 73) || (wCode == 75) || (wCode == 85) || (wCode == 86)) {
+        return document.querySelector(".image").innerHTML = "<img src=\"images/Neige.png\">"
+    } else if ((wCode == 80) || (wCode == 81) || (wCode == 82)) {
+        return document.querySelector(".image").innerHTML = "<img src=\"images/AversePluie.png\">"
+    } else if ((wCode == 95)) {
+        return  document.querySelector(".image").innerHTML = "<img src=\"images/Orageux.png\">"
+    } else if ((wCode == 96) || (wCode == 99)){
+        return document.querySelector(".image").innerHTML = "<img src=\"images/GrosOrage.png\">"
+    }
+    }
 
 
 

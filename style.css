@@ -12,7 +12,7 @@ body {
 }
 
 #truc {
-  margin-top: 400px;
+  margin-top: 100px;
 }
 
 /* Ephéméride */
@@ -44,4 +44,9 @@ center {
 
 .night {
   background-image: url("images/cielNuit.png");
+}
+
+.image {
+  max-width : 50%;
+  height : auto;
 }

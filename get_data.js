@@ -1,5 +1,3 @@
-
-
 const getWeather = async (url) => {
     const response = await fetch(url);
 
@@ -28,11 +26,10 @@ function traitementDesDonnées(data) {
     console.log(whichImageWeathercode(weathercode))
     arrierePlan(sunrise(data), sunset(data))
 
+    document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
     //affichage de la temperature et de la precipitation
     document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
     document.getElementById("precipitation").innerHTML = "Il est prévu " + precipitation + "mm de pluie"
-
-    
 }
 
 
@@ -89,10 +86,6 @@ function getDateAndTime() {
     return [date, hours]
 }
 
-// Affichage de la date et de l'heure dans le HTML
-
-document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
-
 // Mettre date et heure actuelle au format du json
 // Il faut aussi arrondir l'heure (floor)
 
@@ -118,6 +111,7 @@ function returnIndexOfDate(data, currentDateAndTime) {
 
 // Retourne l'heure de levé du soleil et l'heure de couché
 
+
 function sunrise(data) {
     let temp = data.daily.sunrise[0].split("T")
     temp = temp[1].split(":")
@@ -138,7 +132,7 @@ function sunset(data) {
 
 // Fonction qui retourne si il fait jour ou non
 
-function isItDay(sunrise=sunrise(data), sunset=sunset(data), time=getDateAndTime()[1]) {
+function isItDay(sunrise, sunset, time=getDateAndTime()[1]) {
     time = time.split(":")
     time = [parseInt(time[0]), parseInt(time[1])]
     if (time[0] < sunrise[0] || time[0] > sunset[0]) {
@@ -155,29 +149,28 @@ function isItDay(sunrise=sunrise(data), sunset=sunset(data), time=getDateAndTime
 // Fonction d'affichage image en fonction du weathercode
 
 function whichImageWeathercode(weathercode){
-    let wCode= weathercode
-    if (wCode == 0) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Soleil.png\">"
-    } else if ((wCode == 1) || (wCode == 2) || (wCode == 3)){
-        return document.querySelector(".image").innerHTML = "<img src=\"images/BeauCouvert.png\">"
-    } else if ((wCode == 45) || (wCode == 48)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Brumeux.png\">"
-    } else if ((wCode == 51) || (wCode == 53) || (wCode == 55)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/PluieFine.png\">"
-    } else if ((wCode == 61) || (wCode == 63) || (wCode == 65)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Pluvieux.png\">"
-    } else if ((wCode == 66) || (wCode == 67)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/PluieVerglacante.png\">"
-    } else if ((wCode == 71) || (wCode == 73) || (wCode == 75) || (wCode == 85) || (wCode == 86)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Neige.png\">"
-    } else if ((wCode == 80) || (wCode == 81) || (wCode == 82)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/AversePluie.png\">"
-    } else if ((wCode == 95)) {
-        return  document.querySelector(".image").innerHTML = "<img src=\"images/Orageux.png\">"
-    } else if ((wCode == 96) || (wCode == 99)){
-        return document.querySelector(".image").innerHTML = "<img src=\"images/GrosOrage.png\">"
+    if (weathercode == 0) {
+        return document.querySelector(".image").innerHTML = "<img  class=\"image\" src=\"images/Soleil.png\">"
+    } else if ((weathercode == 1) || (weathercode == 2) || (weathercode == 3)){
+        return document.querySelector(".image").innerHTML = "<img  class=\"image\" src=\"images/BeauCouvert.png\">"
+    } else if ((weathercode == 45) || (weathercode == 48)) {
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Brumeux.png\">"
+    } else if ((weathercode == 51) || (weathercode == 53) || (weathercode == 55)) {
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/PluieFine.png\">"
+    } else if ((weathercode == 61) || (weathercode == 63) || (weathercode == 65)) {
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Pluvieux.png\">"
+    } else if ((weathercode == 66) || (weathercode == 67)) {
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/PluieVerglacante.png\">"
+    } else if ((weathercode == 71) || (weathercode == 73) || (weathercode == 75) || (weathercode == 85) || (weathercode == 86)) {
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Neige.png\">"
+    } else if ((weathercode == 80) || (weathercode == 81) || (weathercode == 82)) {
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/AversePluie.png\">"
+    } else if ((weathercode == 95)) {
+        return  document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Orageux.png\">"
+    } else if ((weathercode == 96) || (weathercode == 99)){
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/GrosOrage.png\">"
     }
-    }
+}
 
 
 

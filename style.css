@@ -1,5 +1,5 @@
 body {
-  background-image: url('images/day.png');
+
 }
 
 #horloge {
@@ -11,7 +11,7 @@ body {
   font-size:40px;
 }
 
-#truc {
+#temp-et-precip {
   margin-top: 100px;
 }
 
@@ -36,14 +36,6 @@ body {
 
 center {
   display: none;
-}
-
-.day {
-  background-image: url("images/day.png");
-}
-
-.night {
-  background-image: url("images/cielNuit.png");
 }
 
 .image {

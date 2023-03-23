@@ -34,7 +34,6 @@ function traitementDesDonnées(data) {
 
 
 
-
 // Affichage de l'heure en temps réel dans le HTML et actualisation de l'affichage des données de l'API
 
 function tempsDeRaffraichissement(){
@@ -178,9 +177,9 @@ function arrierePlan(sunrise, sunset){
 
 
     if (isItDay(sunrise, sunset)) {
-        return document.querySelector(".ciel").innerHTML = "<img src=\"images/cielNuit.png\">"
+        return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
     } else {
-        return document.querySelector(".ciel").innerHTML = "<img src=\"images/cielNuit.png\">"
+        return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
         
         

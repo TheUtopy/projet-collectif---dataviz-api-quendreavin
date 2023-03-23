@@ -149,25 +149,25 @@ function isItDay(sunrise, sunset, time=getDateAndTime()[1]) {
 
 function whichImageWeathercode(weathercode){
     if (weathercode == 0) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Soleil.png\">"
+        return document.querySelector(".image").innerHTML = "<img  class=\"image\" src=\"images/Soleil.png\">"
     } else if ((weathercode == 1) || (weathercode == 2) || (weathercode == 3)){
-        return document.querySelector(".image").innerHTML = "<img src=\"images/BeauCouvert.png\">"
+        return document.querySelector(".image").innerHTML = "<img  class=\"image\" src=\"images/BeauCouvert.png\">"
     } else if ((weathercode == 45) || (weathercode == 48)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Brumeux.png\">"
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Brumeux.png\">"
     } else if ((weathercode == 51) || (weathercode == 53) || (weathercode == 55)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/PluieFine.png\">"
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/PluieFine.png\">"
     } else if ((weathercode == 61) || (weathercode == 63) || (weathercode == 65)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Pluvieux.png\">"
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Pluvieux.png\">"
     } else if ((weathercode == 66) || (weathercode == 67)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/PluieVerglacante.png\">"
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/PluieVerglacante.png\">"
     } else if ((weathercode == 71) || (weathercode == 73) || (weathercode == 75) || (weathercode == 85) || (weathercode == 86)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/Neige.png\">"
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Neige.png\">"
     } else if ((weathercode == 80) || (weathercode == 81) || (weathercode == 82)) {
-        return document.querySelector(".image").innerHTML = "<img src=\"images/AversePluie.png\">"
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/AversePluie.png\">"
     } else if ((weathercode == 95)) {
-        return  document.querySelector(".image").innerHTML = "<img src=\"images/Orageux.png\">"
+        return  document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Orageux.png\">"
     } else if ((weathercode == 96) || (weathercode == 99)){
-        return document.querySelector(".image").innerHTML = "<img src=\"images/GrosOrage.png\">"
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/GrosOrage.png\">"
     }
 }
 

@@ -2,43 +2,65 @@ body {
 
 }
 
-#horloge {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color:#ffffff;
-  color:rgb(0, 0, 0);
-  font-size:40px;
+/* Citation du jour */
+#evene_webjour{
+  background-color: #FFF8DC;
+  color: Black;
+  font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size : 12px;
+}
+
+
+
+#date {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width:fit-content;
 }
 
 #temp-et-precip {
+  position: absolute;
+  border: 2px solid rgb(0, 0, 0);
+  top: 40px; left: 1300px;
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width:fit-content;
   margin-top: 100px;
 }
 
-/* Ephéméride */
+#jour_nuit {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width:fit-content;
+}
 
-.fma {
-  text-decoration: none;
-  font-family : Arial, sans-serif;
-  font-size: 9pt;
-  color: rgb(255, 255, 255);
-  text-align: justify;
-  background-color: rgb(190, 63, 63);
+#horloge {
+  position: absolute;
+  top: 40px; left: 1300px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width:fit-content;
 }
-.fmb {
-  text-decoration: none;
-  font-family : Arial, sans-serif;
-  font-size: 9pt;
-  color: rgb(51,2,12);
-  text-align: justify;
-  background-color: rgb(255, 255, 255);
-}
+
+
+
+
 
 center {
   display: none;
 }
 
 .image {
-  max-width : 50%;
+  max-width : 55%;
   height : auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }

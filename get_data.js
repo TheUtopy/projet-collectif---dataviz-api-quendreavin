@@ -21,15 +21,19 @@ function traitementDesDonnées(data) {
     let temperature = data.hourly.temperature_2m[hourlyIndex]
     let precipitation = data.hourly.precipitation[hourlyIndex]
     let weathercode = data.hourly.weathercode[hourlyIndex]
+
     console.log(weathercode, temperature, precipitation)
     console.log(isItDay(sunrise(data), sunset(data)))
     console.log(whichImageWeathercode(weathercode))
     arrierePlan(sunrise(data), sunset(data))
 
+
     document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
     //affichage de la temperature et de la precipitation
     document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
     document.getElementById("precipitation").innerHTML = "Il est prévu " + precipitation + "mm de pluie"
+    document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + " " + "heure " + sunrise(data)[1] + " " + "minutes"
+    document.getElementById("coucher_du_soleil").innerHTML = "Le soleil se couche à " + sunset(data)[0] + " " + "heure " + sunset(data)[1] + " " + "minutes"
 }
 
 

@@ -1,5 +1,67 @@
 body {}
 
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+#date {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width: fit-content;
+  margin-bottom: 100px;
+}
+
+#jour_nuit {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width: fit-content;
+}
+
+#center {
+  display: flex;
+  flex-grow: 10;
+}
+
+.selection-previsions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  max-height: 30px;
+}
+
+.image {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+#horloge {
+  font-size: 40px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width: fit-content;
+}
+
+#temp-et-precip {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width: fit-content;
+  margin-top: 100px;
+}
+
 /* Citation du jour */
 #evene_webjour {
   background-color: #FFF8DC;
@@ -12,61 +74,4 @@ body {}
   padding: 5px 5px 0 0;
   text-align: center;
   border: 2px solid rgb(0, 0, 0);
-}
-
-
-
-#date {
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 12px;
-  padding: 5px;
-  background-color: #ffffff;
-  width: fit-content;
-}
-
-#temp-et-precip {
-  position: absolute;
-  border: 2px solid rgb(0, 0, 0);
-  top: 40px;
-  right: 40px;
-  border-radius: 12px;
-  padding: 5px;
-  background-color: #ffffff;
-  width: fit-content;
-  margin-top: 100px;
-}
-
-#jour_nuit {
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 12px;
-  padding: 5px;
-  background-color: #ffffff;
-  width: fit-content;
-}
-
-#horloge {
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 12px;
-  padding: 5px;
-  background-color: #ffffff;
-  width: fit-content;
-}
-
-
-
-
-
-center {
-  display: none;
-}
-
-.image {
-  max-width: 55%;
-  height: auto;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
 }

@@ -9,6 +9,8 @@ const getWeather = async (url) => {
     return data;
 }
 
+// test
+
 getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
     .then(data => {
         traitementDesDonnées(data);

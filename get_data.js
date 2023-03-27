@@ -11,14 +11,16 @@ const getWeather = async (url) => {
 
 getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
     .then(data => {
-        traitementDesDonnées(data);
+        const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
+        traitementDesDonnées(data, hourlyIndex);
     })
     .catch(err => console.log("rejected\n", err.message))
 
 
-function traitementDesDonnées(data) {
+
+
+function traitementDesDonnées(data, hourlyIndex) {
     console.log(data)
-    const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
     let temperature = data.hourly.temperature_2m[hourlyIndex]
     let precipitation = data.hourly.precipitation[hourlyIndex]
     let weathercode = data.hourly.weathercode[hourlyIndex]
@@ -176,18 +178,39 @@ function whichImageWeathercode(weathercode) {
     }
 }
 
-
+// Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
 
 function arrierePlan(sunrise, sunset) {
-
-
     if (isItDay(sunrise, sunset)) {
         return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
     } else {
         return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
+}
 
+function tomorrowsDate(date = getDateAndTime()[0]) {
+    date = date.split("/")
+    date[0] = String(parseInt(date[0]) + 1)
+    date = date.join("/")
+    return date
+}
 
+function theDayAfterDate(date = getDateAndTime()[0]) {
+    date = date.split("/")
+    date[0] = String(parseInt(date[0]) + 2)
+    date = date.join("/")
+    return date
+}
+
+document.querySelector("#aujourdhui").innerText = getDateAndTime()[0]
+document.querySelector("#demain").innerText = tomorrowsDate()
+document.querySelector("#apres-demain").innerText = theDayAfterDate()
+document.querySelector("#aujourdhui").value = getDateAndTime()[0]
+document.querySelector("#demain").value = tomorrowsDate()
+document.querySelector("#apres-demain").value = theDayAfterDate()
+
+function affichePrevisions() {
+    console.log(document.querySelector("#selection-jour").selected)
 }
 
 

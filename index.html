@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,23 +11,69 @@
 </head>
 
 <body onload=actualisation()>
-    </div>
     <p id="date"></p>
     <div id="jour_nuit"></div>
-        <p id="lever_du_soleil"></p>
-        <p id="coucher_du_soleil"></p>
+
+    <p id="lever_du_soleil"></p>
+    <p id="coucher_du_soleil"></p>
+
+    <div class="selection-previsions">
+        <div class="choix-heure">
+            <label for="selection-heure">Heure : </label>
+            <select id="selection-heure">
+                <option value="00">00:00</option>
+                <option value="01">01:00</option>
+                <option value="02">02:00</option>
+                <option value="03">03:00</option>
+                <option value="04">04:00</option>
+                <option value="05">05:00</option>
+                <option value="06">06:00</option>
+                <option value="07">07:00</option>
+                <option value="08">08:00</option>
+                <option value="09">09:00</option>
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+                <option value="19">19:00</option>
+                <option value="20">20:00</option>
+                <option value="21">21:00</option>
+                <option value="22">22:00</option>
+                <option value="23">23:00</option>
+            </select>
+        </div>
+        <div class="choix-jour">
+            <label for="selection-jour">Jour : </label>
+            <select id="selection-jour">
+                <option value="" id="aujourdhui"></option>
+                <option value="" id="demain"></option>
+                <option value="" id="apres-demain"></option>
+            </select>
+        </div>
+        <button onclick="affichePrevisions()">Afficher les prévisions</button>
+
+    </div>
+
     <span id="horloge"></span>
+
     <div class="image"></div>
+
     <div id="temp-et-precip">
         <p id="temperature"></p>
         <p id="precipitation"></p>
     </div>
+
     <script src="get_data.js"></script>
-    <script language="javascript" src="https://www.ephemeride.com/free/ephem.jsp?css=perso" charset="iso-8859-1"></script>
-    
-    
-    
+    <script language="javascript" src="https://www.ephemeride.com/free/ephem.jsp?css=perso"
+        charset="iso-8859-1"></script>
+
+
+
 </body>
+
 </html>
-
-

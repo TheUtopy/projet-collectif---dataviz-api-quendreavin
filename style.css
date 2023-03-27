@@ -4,6 +4,7 @@ body {
 
 #date {
   border: 2px solid rgb(0, 0, 0);
+  
   border-radius: 12px;
   padding: 5px;
   background-color: #ffffff;
@@ -13,20 +14,24 @@ body {
 #temp-et-precip {
   position: absolute;
   border: 2px solid rgb(0, 0, 0);
-  top: 40px; left: 1300px;
+  top: 100px; right: 40px;
   border-radius: 12px;
   padding: 5px;
+  width: 200px;
   background-color: #ffffff;
-  width:fit-content;
-  margin-top: 100px;
+  text-align: center;
+  
 }
 
 #jour_nuit {
+  position: absolute;
   border: 2px solid rgb(0, 0, 0);
+  top: 300px; 
   border-radius: 12px;
   padding: 5px;
   background-color: #ffffff;
   width:fit-content;
+  
 }
 
 #horloge {
@@ -60,14 +65,11 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
-center {
-  display: none;
-}
 
-.image {
-  max-width : 55%;
-  height : auto;
-  display: block;
-  margin-right: auto;
-  margin-left: auto;
+
+.image {    
+  margin-top: 50px;
+  height: 50vh;
+  display: grid;
+  place-items: center;
 }

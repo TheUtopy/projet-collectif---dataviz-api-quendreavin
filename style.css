@@ -44,12 +44,16 @@ button {
   margin-left: auto;
 }
 
+#horloge-et-temps {
+  margin-top: 20px;
+}
+
 #horloge {
   font-size: 40px;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 12px;
-  padding: 5px;
   background-color: #ffffff;
+  padding: 5px;
   width: fit-content;
 }
 

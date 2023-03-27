@@ -14,7 +14,8 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
         traitementDesDonnées(data);
     })
     .catch(err => console.log("rejected\n", err.message))
-    
+
+
 function traitementDesDonnées(data) {
     console.log(data)
     const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
@@ -40,7 +41,7 @@ function traitementDesDonnées(data) {
 
 // Affichage de l'heure en temps réel dans le HTML et actualisation de l'affichage des données de l'API
 
-function tempsDeRaffraichissement(){
+function tempsDeRaffraichissement() {
     let i = 1000;
     setTimeout('actualisation()', i)
 }
@@ -49,28 +50,28 @@ let heureActuelle = new Date;
 heureActuelle = heureActuelle.getHours()
 //console.log(heureActuelle)
 
-function actualisation(){
+function actualisation() {
     let heure = new Date
     let hours = heure.getHours();
     let min = heure.getMinutes();
     let sec = heure.getSeconds();
 
-    if (hours < 10){
+    if (hours < 10) {
         hours = "0" + hours
     }
-    if (min < 10){
+    if (min < 10) {
         min = "0" + min
     }
-    if (sec < 10){
+    if (sec < 10) {
         sec = "0" + sec
     }
     let horloge = hours + ":" + min + ":" + sec
 
-    
+
     document.getElementById("horloge").innerHTML = horloge
     tempsDeRaffraichissement()
-    
-    if (heureActuelle != parseInt(hours)){
+
+    if (heureActuelle != parseInt(hours)) {
         heureActuelle = hours
         getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
             .then(data => {
@@ -94,16 +95,16 @@ function getDateAndTime() {
 
 //2023-03-21T00:00
 
-function formatDateAndTime(dateAndTime=getDateAndTime()) {
+function formatDateAndTime(dateAndTime = getDateAndTime()) {
     let date = dateAndTime[0].split("/")
     let time = dateAndTime[1].split(":")
     time = time[0]
     if (parseInt(time) < 10) {
         time = "0" + time
     }
-    dateAndTime = date[2] + "-" + date[1] + "-" + date[0] + "T" + time +":00"
+    dateAndTime = date[2] + "-" + date[1] + "-" + date[0] + "T" + time + ":00"
     return dateAndTime
-} 
+}
 
 // Depuis les datas en json, retourne l'index des datas à l'heure actuelle
 // Ce qui permet ensuite d'aller retrouver la température, etc depuis l'index
@@ -135,12 +136,12 @@ function sunset(data) {
 
 // Fonction qui retourne si il fait jour ou non
 
-function isItDay(sunrise, sunset, time=getDateAndTime()[1]) {
+function isItDay(sunrise, sunset, time = getDateAndTime()[1]) {
     time = time.split(":")
     time = [parseInt(time[0]), parseInt(time[1])]
     if (time[0] < sunrise[0] || time[0] > sunset[0]) {
         return false
-    } else if (time[0] == sunrise[0] && time[1] < sunrise[1]){
+    } else if (time[0] == sunrise[0] && time[1] < sunrise[1]) {
         return false
     } else if (time[0] == sunset[0] && time[1] > sunset[1]) {
         return false
@@ -151,10 +152,10 @@ function isItDay(sunrise, sunset, time=getDateAndTime()[1]) {
 
 // Fonction d'affichage image en fonction du weathercode
 
-function whichImageWeathercode(weathercode){
+function whichImageWeathercode(weathercode) {
     if (weathercode == 0) {
         return document.querySelector(".image").innerHTML = "<img  class=\"image\" src=\"images/Soleil.png\">"
-    } else if ((weathercode == 1) || (weathercode == 2) || (weathercode == 3)){
+    } else if ((weathercode == 1) || (weathercode == 2) || (weathercode == 3)) {
         return document.querySelector(".image").innerHTML = "<img  class=\"image\" src=\"images/BeauCouvert.png\">"
     } else if ((weathercode == 45) || (weathercode == 48)) {
         return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Brumeux.png\">"
@@ -169,15 +170,15 @@ function whichImageWeathercode(weathercode){
     } else if ((weathercode == 80) || (weathercode == 81) || (weathercode == 82)) {
         return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/AversePluie.png\">"
     } else if ((weathercode == 95)) {
-        return  document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Orageux.png\">"
-    } else if ((weathercode == 96) || (weathercode == 99)){
+        return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Orageux.png\">"
+    } else if ((weathercode == 96) || (weathercode == 99)) {
         return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/GrosOrage.png\">"
     }
 }
 
 
 
-function arrierePlan(sunrise, sunset){
+function arrierePlan(sunrise, sunset) {
 
 
     if (isItDay(sunrise, sunset)) {
@@ -185,9 +186,8 @@ function arrierePlan(sunrise, sunset){
     } else {
         return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
-        
-        
+
+
 }
 
 
-    

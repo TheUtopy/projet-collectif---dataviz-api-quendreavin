@@ -24,7 +24,7 @@ header {
 
 #center {
   display: flex;
-  flex-grow: 10;
+  flex-grow: 2;
 }
 
 .selection-previsions {

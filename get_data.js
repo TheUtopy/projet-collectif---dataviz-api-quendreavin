@@ -29,13 +29,14 @@ function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, forma
     console.log(whichImageWeathercode(weathercode))
     arrierePlan(sunrise(data), sunset(data))
 
-
     document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
-    //affichage de la temperature et de la precipitation
-    document.getElementById("temperature").innerHTML = "Il fait " + temperature + "°C"
-    document.getElementById("precipitation").innerHTML = "Il est prévu " + precipitation + "mm de pluie"
     document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + " " + "heure " + sunrise(data)[1] + " " + "minutes"
     document.getElementById("coucher_du_soleil").innerHTML = "Le soleil se couche à " + sunset(data)[0] + " " + "heure " + sunset(data)[1] + " " + "minutes"
+    //affichage de la temperature et de la precipitation
+
+    document.getElementById("temperature").innerHTML = temperature + "°C"
+    document.getElementById("precipitation").innerHTML = precipitation + " mm de pluie"
+
 }
 
 
@@ -262,6 +263,8 @@ document.querySelector("#aujourdhui").value = getDateAndTime()[0]
 document.querySelector("#demain").value = nextDate(1)
 document.querySelector("#apres-demain").value = nextDate(2)
 
+// Fonction du bouton qui permet d'afficher les prévisions à l'heure et la date séléctionnées
+
 function affichePrevisions() {
     console.log(document.querySelector("#selection-jour").value + " " + document.querySelector("#selection-heure").options[document.querySelector("#selection-heure").selectedIndex].text)
     const dateAndTime = [document.querySelector("#selection-jour").value, document.querySelector("#selection-heure").options[document.querySelector("#selection-heure").selectedIndex].text]
@@ -274,4 +277,12 @@ function affichePrevisions() {
         .catch(err => console.log("rejected\n", err.message))
 }
 
+// Reset au temps actuel
 
+function resetPrevisions() {
+    getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
+        .then(data => {
+            traitementDesDonnées(data);
+        })
+        .catch(err => console.log("rejected\n", err.message))
+}

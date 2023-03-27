@@ -1,12 +1,12 @@
 body {}
 
-header {
-  display: flex;
-  justify-content: space-between;
-}
+/* Citation du jour */
+
 
 #date {
+  position: absolute ;
   border: 2px solid rgb(0, 0, 0);
+  top: 100px; left: 150px;
   border-radius: 12px;
   padding: 5px;
   background-color: #ffffff;
@@ -15,7 +15,9 @@ header {
 }
 
 #jour_nuit {
+  position: absolute;
   border: 2px solid rgb(0, 0, 0);
+  top: 315px; left: 270px;
   border-radius: 12px;
   padding: 5px;
   background-color: #ffffff;
@@ -37,7 +39,7 @@ button {
 }
 
 .image {
-  max-width: 80%;
+  max-width: 55%;
   height: auto;
   display: block;
   margin-right: auto;
@@ -51,20 +53,26 @@ button {
   padding: 5px;
   background-color: #ffffff;
   width: fit-content;
+  position: absolute;
+  top: 150px; left: 205px;
 }
 
 #temp-et-precip {
+  position: absolute;
+  top: 315px; right: 200px;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 12px;
   padding: 5px;
   background-color: #ffffff;
   width: fit-content;
-  margin-top: 100px;
+  
 }
 
 /* Citation du jour */
 #evene_webjour {
-  background-color: #FFF8DC;
+  position: absolute;
+  top: 500px; left: 550px;
+  background-color: #ffffff;
   color: Black;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   font-size: 12px;

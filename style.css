@@ -6,6 +6,12 @@ body {}
   color: Black;
   font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
   font-size: 12px;
+  width: 30%;
+  margin: auto;
+  border-radius: 12px;
+  padding: 5px 5px 0 0;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
 }
 
 

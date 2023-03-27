@@ -12,6 +12,7 @@ const getWeather = async (url) => {
 getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
     .then(data => {
         traitementDesDonnées(data);
+        isItDay(sunrise(data), sunset(data), getDateAndTime()[1])
     })
     .catch(err => console.log("rejected\n", err.message))
 
@@ -25,9 +26,9 @@ function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, forma
     let weathercode = data.hourly.weathercode[hourlyIndex]
 
     console.log(weathercode, temperature, precipitation)
-    console.log(isItDay(sunrise(data), sunset(data)))
     console.log(whichImageWeathercode(weathercode))
-    arrierePlan(sunrise(data), sunset(data))
+
+
 
     document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
     document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + " " + "heure " + sunrise(data)[1] + " " + "minutes"
@@ -138,18 +139,32 @@ function sunset(data) {
 }
 
 // Fonction qui retourne si il fait jour ou non
+// Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
 
-function isItDay(sunrise, sunset, time = getDateAndTime()[1]) {
+function isItDay(sunrise, sunset, time) {
+    console.log(time)
     time = time.split(":")
+    console.log(time)
     time = [parseInt(time[0]), parseInt(time[1])]
+    console.log(time)
     if (time[0] < sunrise[0] || time[0] > sunset[0]) {
-        return false
+        return document.querySelector("body").style.backgroundImage = "url(\"images/cielNuit.png\")"
     } else if (time[0] == sunrise[0] && time[1] < sunrise[1]) {
-        return false
+        return document.querySelector("body").style.backgroundImage = "url(\"images/cielNuit.png\")"
     } else if (time[0] == sunset[0] && time[1] > sunset[1]) {
-        return false
+        return document.querySelector("body").style.backgroundImage = "url(\"images/cielNuit.png\")"
     } else {
-        return true
+        return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
+    }
+}
+
+// Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
+
+function arrierePlan(sunrise, sunset) {
+    if (isItDay(sunrise, sunset)) {
+        return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
+    } else {
+        return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
 }
 
@@ -176,16 +191,6 @@ function whichImageWeathercode(weathercode) {
         return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Orageux.png\">"
     } else if ((weathercode == 96) || (weathercode == 99)) {
         return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/GrosOrage.png\">"
-    }
-}
-
-// Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
-
-function arrierePlan(sunrise, sunset) {
-    if (isItDay(sunrise, sunset)) {
-        return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
-    } else {
-        return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
 }
 
@@ -267,12 +272,13 @@ document.querySelector("#apres-demain").value = nextDate(2)
 
 function affichePrevisions() {
     console.log(document.querySelector("#selection-jour").value + " " + document.querySelector("#selection-heure").options[document.querySelector("#selection-heure").selectedIndex].text)
-    const dateAndTime = [document.querySelector("#selection-jour").value, document.querySelector("#selection-heure").options[document.querySelector("#selection-heure").selectedIndex].text]
+    const heure = document.querySelector("#selection-heure").options[document.querySelector("#selection-heure").selectedIndex].text
+    const dateAndTime = [document.querySelector("#selection-jour").value, heure]
     getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
         .then(data => {
-            console.log(formatDateAndTime(dateAndTime))
-            console.log(returnIndexOfDate(data, formatDateAndTime(dateAndTime)))
+            console.log(heure)
             traitementDesDonnées(data, returnIndexOfDate(data, formatDateAndTime(dateAndTime)));
+            isItDay(sunrise(data), sunset(data), heure)
         })
         .catch(err => console.log("rejected\n", err.message))
 }
@@ -283,6 +289,7 @@ function resetPrevisions() {
     getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
         .then(data => {
             traitementDesDonnées(data);
+            isItDay(sunrise(data), sunset(data), getDateAndTime()[1])
         })
         .catch(err => console.log("rejected\n", err.message))
 }

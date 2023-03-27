@@ -11,8 +11,6 @@ body {}
   font-size: 12px;
 }
 
-
-
 #date {
   position: absolute ;
   border: 2px solid rgb(0, 0, 0);
@@ -21,18 +19,7 @@ body {}
   padding: 5px;
   background-color: #ffffff;
   width: fit-content;
-}
-
-#temp-et-precip {
-  position: absolute;
-  border: 2px solid rgb(0, 0, 0);
-  top: 300px; right: 150px;
-  border-radius: 12px;
-  padding: 5px;
-  width: 200px;
-  background-color: #ffffff;
-  width: fit-content;
-  margin-top: 100px;
+  margin-bottom: 100px;
 }
 
 #jour_nuit {
@@ -45,9 +32,30 @@ body {}
   width: fit-content;
 }
 
+#center {
+  display: flex;
+  flex-grow: 10;
+}
+
+.selection-previsions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button {
+  max-height: 30px;
+}
+
+.image {
+  max-width: 80%;
+  height: auto;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 #horloge {
-  position: absolute;
-  top: 400px; right: 40px;
+  font-size: 40px;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 12px;
   padding: 5px;
@@ -55,20 +63,25 @@ body {}
   width: fit-content;
 }
 
-
-.image {    
-  margin-top: 50px;
-  height: 40vh;
-  display: grid;
-  place-items: center;
+#temp-et-precip {
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 5px;
+  background-color: #ffffff;
+  width: fit-content;
+  margin-top: 100px;
 }
 
-.selection-previsions {
-  position: absolute;
-  border: 2px solid #000000;
-  background-color: #ffffff;
+/* Citation du jour */
+#evene_webjour {
+  background-color: #FFF8DC;
+  color: Black;
+  font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  width: 30%;
+  margin: auto;
   border-radius: 12px;
-  width: fit-content;
-  padding: 5px;
-  top: 100px; right: 150px;
+  padding: 5px 5px 0 0;
+  text-align: center;
+  border: 2px solid rgb(0, 0, 0);
 }

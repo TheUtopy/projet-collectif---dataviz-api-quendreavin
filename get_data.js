@@ -16,9 +16,10 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
     .catch(err => console.log("rejected\n", err.message))
 
 
-function traitementDesDonnées(data) {
+
+
+function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, formatDateAndTime())) {
     console.log(data)
-    const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
     let temperature = data.hourly.temperature_2m[hourlyIndex]
     let precipitation = data.hourly.precipitation[hourlyIndex]
     let weathercode = data.hourly.weathercode[hourlyIndex]
@@ -90,6 +91,7 @@ function getDateAndTime() {
     return [date, hours]
 }
 
+
 // Mettre date et heure actuelle au format du json
 // Il faut aussi arrondir l'heure (floor)
 
@@ -99,7 +101,7 @@ function formatDateAndTime(dateAndTime = getDateAndTime()) {
     let date = dateAndTime[0].split("/")
     let time = dateAndTime[1].split(":")
     time = time[0]
-    if (parseInt(time) < 10) {
+    if (time.length == 1) {
         time = "0" + time
     }
     dateAndTime = date[2] + "-" + date[1] + "-" + date[0] + "T" + time + ":00"
@@ -176,18 +178,100 @@ function whichImageWeathercode(weathercode) {
     }
 }
 
-
+// Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
 
 function arrierePlan(sunrise, sunset) {
-
-
     if (isItDay(sunrise, sunset)) {
         return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
     } else {
         return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
+}
 
+//Vérifie si une date est valide
 
+function isValidDate(date) {
+    if (!maxDaysInMonth(date[0], date[1]) || date[2] < 1000 || date[2] > 9999) {
+        return false
+    }
+    return true
+}
+
+function maxDaysInMonth(days, month) {
+    if (["01", "03", "05", "07", "08", "10", "12"].includes(month) && parseInt(days) <= 31) {
+        return true
+    }
+    else if (["04", "06", "09", "11"].includes(month) && parseInt(days) <= 30) {
+        return true
+    }
+    else if (month == 02 && parseInt(days) <= 28) {
+        return true
+    }
+    else {
+        return false
+    }
+}
+
+// Retourne le nombre de jour dans le mois passer en argument
+
+function numberOfDaysInMonth(month) {
+    if (["01", "03", "05", "07", "08", "10", "12"].includes(month)) {
+        return 31
+    }
+    else if (["04", "06", "09", "11"].includes(month)) {
+        return 30
+    }
+    else if (month == "02") {
+        return 28
+    }
+}
+
+// Retourne la date dans x jour(s)
+
+function nextDate(x, date = getDateAndTime()[0]) {
+    date = date.split("/")
+    let newDays = String(parseInt(date[0]) + x)
+    let newDate = [newDays, date[1], date[2]]
+    if (isValidDate(newDate)) {
+        date[0] = newDays
+    } else if (date[1] == "12") {
+        if (date[0] == "30" && x == 2 || date[0] == "31" && x == 1) {
+            date = ["01", "01", String(parseInt(date[2]) + 1)]
+        } else if (date[0] == "31" && x == 2) {
+            date = ["02", "01", String(parseInt(date[2]) + 1)]
+        }
+    } else {
+        date = [String((parseInt(newDays) - numberOfDaysInMonth(date[1]))), String(parseInt(date[1]) + 1), date[2]]
+    }
+    if (date[0].length == 1) {
+        date[0] = "0" + date[0]
+    }
+    if (date[1].length == 1) {
+        date[1] = "0" + date[1]
+    }
+    date = date.join("/")
+    return date
+}
+
+// Affichage des dates dans le menu déroulant
+
+document.querySelector("#aujourdhui").innerText = getDateAndTime()[0]
+document.querySelector("#demain").innerText = nextDate(1)
+document.querySelector("#apres-demain").innerText = nextDate(2)
+document.querySelector("#aujourdhui").value = getDateAndTime()[0]
+document.querySelector("#demain").value = nextDate(1)
+document.querySelector("#apres-demain").value = nextDate(2)
+
+function affichePrevisions() {
+    console.log(document.querySelector("#selection-jour").value + " " + document.querySelector("#selection-heure").options[document.querySelector("#selection-heure").selectedIndex].text)
+    const dateAndTime = [document.querySelector("#selection-jour").value, document.querySelector("#selection-heure").options[document.querySelector("#selection-heure").selectedIndex].text]
+    getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
+        .then(data => {
+            console.log(formatDateAndTime(dateAndTime))
+            console.log(returnIndexOfDate(data, formatDateAndTime(dateAndTime)))
+            traitementDesDonnées(data, returnIndexOfDate(data, formatDateAndTime(dateAndTime)));
+        })
+        .catch(err => console.log("rejected\n", err.message))
 }
 
 

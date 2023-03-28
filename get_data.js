@@ -144,11 +144,8 @@ function sunset(data) {
 // Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
 
 function isItDay(sunrise, sunset, time) {
-    console.log(time)
     time = time.split(":")
-    console.log(time)
     time = [parseInt(time[0]), parseInt(time[1])]
-    console.log(time)
     if (time[0] < sunrise[0] || time[0] > sunset[0]) {
         return document.querySelector("body").style.backgroundImage = "url(\"images/cielNuit.png\")"
     } else if (time[0] == sunrise[0] && time[1] < sunrise[1]) {

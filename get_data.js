@@ -20,7 +20,7 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
 // Fonction qui permet de traiter les données et de les afficher
 // Cela permet plus de clarté au dessus
 
-function traitementDesDonnées(data) {
+function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, formatDateAndTime())) {
     console.log(data)
     let temperature = data.hourly.temperature_2m[hourlyIndex]
     let precipitation = data.hourly.precipitation[hourlyIndex]

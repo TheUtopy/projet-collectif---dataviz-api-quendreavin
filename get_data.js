@@ -14,7 +14,11 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
         traitementDesDonnées(data);
     })
     .catch(err => console.log("rejected\n", err.message))
-    
+
+
+// Fonction qui permet de traiter les données et de les afficher
+// Cela permet plus de clarté au dessus
+
 function traitementDesDonnées(data) {
     console.log(data)
     const hourlyIndex = returnIndexOfDate(data, formatDateAndTime())
@@ -181,8 +185,6 @@ function arrierePlan(sunrise, sunset){
     } else {
         return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
-        
-        
 }
 
 

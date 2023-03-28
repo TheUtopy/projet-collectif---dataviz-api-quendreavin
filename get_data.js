@@ -80,6 +80,7 @@ function actualisation() {
         getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
             .then(data => {
                 traitementDesDonnées(data);
+                isItDay(sunrise(data), sunset(data), getDateAndTime()[1])
             })
             .catch(err => console.log("rejected\n", err.message))
     }
@@ -143,11 +144,8 @@ function sunset(data) {
 // Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
 
 function isItDay(sunrise, sunset, time) {
-    console.log(time)
     time = time.split(":")
-    console.log(time)
     time = [parseInt(time[0]), parseInt(time[1])]
-    console.log(time)
     if (time[0] < sunrise[0] || time[0] > sunset[0]) {
         return document.querySelector("body").style.backgroundImage = "url(\"images/cielNuit.png\")"
     } else if (time[0] == sunrise[0] && time[1] < sunrise[1]) {

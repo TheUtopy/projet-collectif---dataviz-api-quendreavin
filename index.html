@@ -15,11 +15,15 @@
         <div id="info-daujourdhui">
             <p id="date"></p>
             <div id="jour_nuit">
-                <img src="images/LeverSoleil.png" width=8% height=8%/>
-                <span id="lever_du_soleil"></span>
+                <div class="boite-jour-nuit">
+                    <img src="images/LeverSoleil.png" class="image-jour-nuit"/>
+                    <span id="lever_du_soleil"></span>
+                </div>
                 <br>
-                <img src="images/CoucherSoleil.png" width=8% height=8%/>
-                <span id="coucher_du_soleil"></span>
+                <div class="boite-jour-nuit">
+                    <img src="images/CoucherSoleil.png" class="image-jour-nuit"/>
+                    <span id="coucher_du_soleil"></span>
+                </div>
             </div>
         </div>
 
@@ -81,8 +85,7 @@
     <script src="get_data.js"></script>
 
 
-    <div
-        style="width:190px;height:168px;background:#fff;position:relative;top:-55px;right:-25px;margin:auto;border-radius: 12px;padding: 0 5px 20px 5px;border: 2px solid rgb(0, 0, 0);">
+    <div id="saint-du-jour">
         <img alt="Avatar Fête du Jour - fetedujour.fr" style="margin: 5px auto;" width="180" height="28"
             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAAcCAMAAAD/XGWDAAAAYFBMVEX////cx6nv5Mjy8tDhz7MyKRudlIqaKyf7+uno2r3IqZDVvJuBdmpdUk7SkhHFjnysU0l9AgPz7OOsqqzPzs62cF6/vLu2dhHksBd8Uxn62EK2lDvi4N/86nnlwD3/PEMAPYU9AAAE5UlEQVR4XtXXiW7jNhCAYc7wvnQevtP3f8vOkJG0tpIgDdou9l+taSMW8JkeCYn4A3JOSnw8UPw5+bdzrfF/jBmbZkXjfwNwwnFDCRGHNVciw338x+jz7Ubk2635V6lViZzn1Af5mlPpePpDfgHwpyYlRje3f4XqKrU4P+/pZxjMwXyl3CvgbugfA+BySjfa7blp1x8NP95Vz73KvEeJtEjpgR4IKTnc0DKmV9/jeqXjdbOHTA3LSM/MKTXNfJujqE2DcFgm7mtope7SY4WJCiACgds5Yuw6kG3XdTOtKxpjmsZpeBqON0If1WI0KWUtXJgvlxMfd1Fb6HQPdeSwNPwS1nYnAKhPaueAOFtr+z640Peta/s+OttzdpsRDKOYlnGZdvTb7fZGnQdx6K61CPpyyZd8uuQVPfI7FRQPH+oZBQq43XoYCA74Rd/PgpicZXSo6K63HcFb+TTTjt3vBnejrse5dk44aSKYEEM09LmMWRa3jDiUM91h++D1ukcElJJ3fSWDCZ4WXF9aQs+9bSMx5a/oTsABTQ3TWN3uulWtTsrH43Hl1pW+iOtVTZN3i3GOxoNC2Jxk4xDUegWxE2L0YZ67znbvah8zSFIH2NGO0FLMB7Q6oqt7WUYCXM+n5ky9navxbe/cUOczLfQcmTqNQpiCFnUOCqbtZqpFmBnZRbAcQbq+hGUeUJrkg8GUsEz6hlay7PRxPIDft6K37jQnZLrQdXaii63g95pTQVd6oza0F5yDNWmrzcW6tlBXK0nUdXNbzN6YbFxOMhsJ8Dk6rB81eKgx+kk9jvF8Jm+pIPdO3Lre+B7hJnMfTBAljFAvOixbYztJaFt2ep5t38VImM45h0BhSlEHzBE0RODUioYV3a5oa3mF9/wTehnHSYhHc3qVVm75LAzmx3ZMKZmUc0p3UVMRSp5tiN7zZgknAaRjj0fCqBjY6I3GQEeWOQXjAVGpw05HESp6LiMNx50etjsImBv7Ti81F31ZY7jWOmf6nyZRcxA3tOeVN8sXo6KdRiA0x8OPOTs6tDZZJwVqtq3zfUX7Fd2FrqKts731h52+j3wRclMaaRnui0mJUXqn6q2LPt0KOqclLULsAxIherLZ3ipCczN+gFbELWIjRyA0CTEwms+1fUHXoiQwz0mLz+iJyNuM5A3B+GlZRpNy4e/lfHtLZpwcUTe08xuaU/gB2rYhAoVZ56SDQzABgNFcnWKu9X7m1dKTjs+1/O3FDc3kSXyjtO3zIMTpUaU72mGMRI7V1rZlPLrQBogVHRktnFT8PjDoYspUgu1zdj6W+2UbfATPb1P0qBRrY4gUmSOh70z+VvuYRCGaDW2mug5MpsCT0CFGRehIyBXNNMt3bgCSyMTXg4m+4DxLo4cYPVIMjoqCCgXiq1gjdJru4psFk7hLmgyMOQ3P6IEkNUJbljC6I2RQO5rSfbEZnRbETcJSFb9TGY8fdE+Zevp92qnwAZrTM0bV63e0tZcZGBAA4SsapdaA2tXqZ2iR9V9WD2LP4WaOqtOdekdbqvUR5tQCQUNUyvuqeiUz0iPWPwY//9PBewzpR2ije53FHg/0nlKwO+oLj4pd/PxgJQZBxfcbph+hk9ZP6AHCx9/xF1+/qtb/ryXr/XZeB/pbMbVaf0fTOB0GDtF7noaXFDsJeqD+3v4GlEd9bmQ83Z0AAAAASUVORK5CYII=" />
         <div

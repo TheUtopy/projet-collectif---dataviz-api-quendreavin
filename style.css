@@ -3,23 +3,41 @@ body {}
 header {
   display: flex;
   justify-content: space-between;
+  height: 480px;
+}
+
+#info-daujourdhui {
+  margin-top: 5px;
 }
 
 #date {
+  font-size: 20px;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 12px;
-  padding: 5px;
+  padding: 20px;
   background-color: #ffffff;
   width: fit-content;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
 }
 
 #jour_nuit {
+  max-width: 320px;
   border: 2px solid rgb(0, 0, 0);
   border-radius: 12px;
-  padding: 5px;
+  padding: 25px;
   background-color: #ffffff;
   width: fit-content;
+}
+
+.boite-jour-nuit {
+  display: flex;
+  align-items: center;
+}
+
+.image-jour-nuit {
+  width: 20%;
+  height: 20%;
+  margin-right: 10px;
 }
 
 #center {
@@ -45,7 +63,7 @@ button {
 }
 
 #horloge-et-temps {
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
 #horloge {
@@ -60,11 +78,23 @@ button {
 #temp-et-precip {
   border: 2px solid rgb(0, 0, 0);
   border-radius: 12px;
-  padding: 5px;
+  padding: 20px;
   background-color: #ffffff;
   width: fit-content;
-  margin-top: 100px;
+  margin-top: 200px;
 }
+
+#saint-du-jour {
+  width:190px;
+  height:168px;
+  background:#fff;
+  margin:auto;
+  border-radius: 12px;
+  padding: 0 5px 20px 5px;
+  border: 2px solid rgb(0, 0, 0);
+}
+
+
 
 /* Citation du jour */
 #evene_webjour {

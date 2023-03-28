@@ -282,3 +282,9 @@ function resetPrevisions() {
         })
         .catch(err => console.log("rejected\n", err.message))
 }
+
+function iconeSelonTemperature(temperature) {
+    if (temperature < 10) {
+        document.querySelector("#image-temperature").innerHTML = "<img src=\"images/.png\">"
+    }
+}

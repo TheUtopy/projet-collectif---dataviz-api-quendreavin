@@ -32,7 +32,7 @@ function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, forma
 
     document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
     document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + " " + "heure " + sunrise(data)[1] + " " + "minutes"
-    document.getElementById("coucher_du_soleil").innerHTML = "Le soleil se couche à " + sunset(data)[0] + " " + "heure " + sunset(data)[1] + " " + "minutes"
+    document.getElementById("coucher_du_soleil").innerHTML = "Il se couche à " + sunset(data)[0] + " " + "heure " + sunset(data)[1] + " " + "minutes"
     //affichage de la temperature et de la precipitation
 
     document.getElementById("temperature").innerHTML = temperature + "°C"
@@ -155,16 +155,6 @@ function isItDay(sunrise, sunset, time) {
         return document.querySelector("body").style.backgroundImage = "url(\"images/cielNuit.png\")"
     } else {
         return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
-    }
-}
-
-// Change l'affichage de l'image en arrière plan selon qu'il fasse jour ou nuit
-
-function arrierePlan(sunrise, sunset) {
-    if (isItDay(sunrise, sunset)) {
-        return document.querySelector("body").style.backgroundImage = "url(\"images/day.png\")"
-    } else {
-        return document.querySelector("body").style.backgrounImage = "url(\"images/cielNuit.png\")"
     }
 }
 

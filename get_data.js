@@ -17,7 +17,8 @@ getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-
     .catch(err => console.log("rejected\n", err.message))
 
 
-
+// Fonction qui permet de traiter les données et de les afficher
+// Cela permet plus de clarté au dessus
 
 function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, formatDateAndTime())) {
     console.log(data)

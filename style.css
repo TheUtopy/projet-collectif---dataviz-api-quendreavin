@@ -84,6 +84,27 @@ button {
   margin-top: 200px;
 }
 
+#temperatureImage {
+  width : 60px;
+  height: auto;
+}
+
+.thermometre{
+  width : 60px;
+  height: auto;
+}
+
+#temperature{
+  max-width: 320px;
+  border: 2px solid rgb(0, 0, 0);
+  border-radius: 12px;
+  padding: 25px;
+  background-color: #ffffff;
+  width: fit-content;
+}
+
+
+
 #saint-du-jour {
   width:190px;
   height:168px;

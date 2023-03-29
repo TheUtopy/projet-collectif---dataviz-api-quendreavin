@@ -98,5 +98,13 @@ button {
   display: none;
 }
 
+#lune {
+  border: 2px solid #ff0000;
+  width:fit-content ;
+  background-color: #000000;
+  border-radius: 12px;
+  padding-top: 7px;
+}
+
 
 

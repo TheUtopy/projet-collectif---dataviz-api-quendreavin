@@ -44,6 +44,13 @@ header {
   margin-right: 10px;
 }
 
+.image-quartier-lune {
+  width: 10%;
+  height: 20%;
+  margin-left: 14px;
+  margin-right: 28px;
+}
+
 #center {
   display: flex;
   flex-direction: column;
@@ -103,7 +110,7 @@ button {
 
 .blocTemperature{
   display:flex;
-
+  justify-content: space-evenly;
 }
 
 #temperature{
@@ -112,6 +119,27 @@ button {
   background-color: #ffffff;
   display : flex;
   margin-left: 0px;
+}
+
+.blocPrecipitation{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#precipitation{
+  max-width: 320px;
+  padding: 25px;
+  background-color: #ffffff;
+  display : flex;
+  margin-left: 0px;
+}
+
+#precipitationImage{
+  width : auto;
+  height: 70px;
+  float : left;
+  display : flex;
 }
 
 #saint-du-jour {
@@ -129,11 +157,7 @@ button {
 }
 
 #lune {
-  border: 2px solid #ff0000;
-  width:fit-content ;
-  background-color: #000000;
-  border-radius: 12px;
-  padding-top: 7px;
+  margin-top: 25px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -205,4 +229,6 @@ button {
     max-height: fit-content;
   }
 }
+
+
 

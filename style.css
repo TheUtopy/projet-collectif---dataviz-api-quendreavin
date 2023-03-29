@@ -44,11 +44,20 @@ header {
   margin-right: 10px;
 }
 
+#lune {
+  display: flex;
+  align-items: center;
+}
+
 .image-quartier-lune {
   width: 10%;
   height: 20%;
   margin-left: 14px;
   margin-right: 28px;
+}
+
+#text-lune {
+  text-align: center;
 }
 
 #center {
@@ -70,8 +79,33 @@ button {
   max-width: 80%;
   height: auto;
   display: block;
+  margin-top: 100px;
   margin-right: auto;
   margin-left: auto;
+  animation: image 1s ease;
+}
+
+@keyframes image {
+  30% {
+    transform: scale(1.2);
+  }
+
+  40%,
+  60% {
+    transform: rotate(-20deg) scale(1.2);
+  }
+
+  50% {
+    transform: rotate(20deg) scale(1.2);
+  }
+
+  70% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: scale(1);
+  }
 }
 
 #horloge-et-temps {
@@ -160,7 +194,7 @@ button {
   margin-top: 25px;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1080px) {
 
   header {
     height: auto;
@@ -183,6 +217,10 @@ button {
     order: 3;
   }
 
+  .image {
+    margin-top: auto;
+  }
+
   .selection-previsions {
     margin-top: 20px;
   }
@@ -199,7 +237,7 @@ button {
   
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   header {
     justify-content: center;
     flex-wrap: nowrap;
@@ -208,6 +246,9 @@ button {
 
   #info-daujourdhui {
     order: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   
   center {

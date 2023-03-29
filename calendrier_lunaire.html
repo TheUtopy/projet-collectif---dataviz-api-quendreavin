@@ -9,11 +9,20 @@
 <style>
     body {
         background-image: url('images/fond_lune.png');
+        background-repeat: no-repeat;
+        background-size: auto;
     }
 </style>
 <style>
     #lunaire {
-        height: 750px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 50px;
+        
+    }
+
+    #reset { 
         display: flex;
         align-items: center;
         justify-content: center;
@@ -37,8 +46,13 @@
     </div>
 </div> 
 </div>
-
 <!-- END Calendrier-365.fr - Phase lunaire actuelle -->
+<div id="reset" >
+<form action="index.html">
+    <button type="submit">Revenir aux prévisions méteo</button>
+</form>
+</div>
+
     
 </body>
 </html>

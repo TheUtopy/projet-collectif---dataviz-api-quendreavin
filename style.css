@@ -95,6 +95,10 @@ button {
   border: 2px solid rgb(0, 0, 0);
 }
 
+.panel-primary {
+  display: none;
+}
+
 @media screen and (max-width: 1000px) {
 
   header {

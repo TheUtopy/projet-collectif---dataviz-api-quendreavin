@@ -28,13 +28,15 @@ function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, forma
 
     console.log(weathercode, temperature, precipitation)
     console.log(whichImageWeathercode(weathercode))
+    typeOfTemperature(temperature)
 
     document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
     document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + " " + "heure " + sunrise(data)[1] + " " + "minutes"
     document.getElementById("coucher_du_soleil").innerHTML = "Il se couche à " + sunset(data)[0] + " " + "heure " + sunset(data)[1] + " " + "minutes"
     //affichage de la temperature et de la precipitation
-
-    document.getElementById("temperature").innerHTML = temperature + "°C"
+    console.log("1")
+    document.querySelector("#temperature").innerHTML = temperature + "°C"
+    console.log("2")
     document.getElementById("precipitation").innerHTML = precipitation + " mm de pluie"
 
 }
@@ -178,6 +180,17 @@ function whichImageWeathercode(weathercode) {
         return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/Orageux.png\">"
     } else if ((weathercode == 96) || (weathercode == 99)) {
         return document.querySelector(".image").innerHTML = "<img class=\"image\" src=\"images/GrosOrage.png\">"
+    }
+}
+
+// Fonction pour afficher le thermométre en fonction de la température
+function typeOfTemperature(temperature) {
+    if (temperature <= 10){
+        return document.querySelector("#temperatureImage").innerHTML = "<img class=\"thermometre\" src=\"images/FaibleTemperature.png\">"  
+    } else if ((temperature>10) || (temperature<25)) {
+        return document.querySelector("#temperatureImage").innerHTML = "<img class=\"thermometre\" src=\"images/TemperatureMoyenne.png\">"
+    } else if ((temperature >= 25)){
+        return document.querySelector("#temperatureImage").innerHTML = "<img class=\"thermometre\" src=\"images/TemperatureEleve.png\">"
     }
 }
 

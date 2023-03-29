@@ -31,8 +31,8 @@ function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, forma
     typeOfTemperature(temperature)
 
     document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
-    document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + " " + "heure " + sunrise(data)[1] + " " + "minutes"
-    document.getElementById("coucher_du_soleil").innerHTML = "Il se couche à " + sunset(data)[0] + " " + "heure " + sunset(data)[1] + " " + "minutes"
+    document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + "h" + sunrise(data)[1]
+    document.getElementById("coucher_du_soleil").innerHTML = "Il se couche à " + sunset(data)[0] + "h" + sunset(data)[1]
     //affichage de la temperature et de la precipitation
     console.log("1")
     document.querySelector("#temperature").innerHTML = temperature + "°C"

@@ -95,7 +95,7 @@ button {
 
 .blocTemperature{
   display:flex;
-
+  justify-content: space-evenly;
 }
 
 #temperature{
@@ -104,6 +104,27 @@ button {
   background-color: #ffffff;
   display : flex;
   margin-left: 0px;
+}
+
+.blocPrecipitation{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+#precipitation{
+  max-width: 320px;
+  padding: 25px;
+  background-color: #ffffff;
+  display : flex;
+  margin-left: 0px;
+}
+
+#precipitationImage{
+  width : auto;
+  height: 70px;
+  float : left;
+  display : flex;
 }
 
 #saint-du-jour {

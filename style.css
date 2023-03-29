@@ -40,6 +40,13 @@ header {
   margin-right: 10px;
 }
 
+.image-quartier-lune {
+  width: 10%;
+  height: 20%;
+  margin-left: 14px;
+  margin-right: 28px;
+}
+
 #center {
   display: flex;
   flex-direction: column;
@@ -121,11 +128,7 @@ button {
 }
 
 #lune {
-  border: 2px solid #ff0000;
-  width:fit-content ;
-  background-color: #000000;
-  border-radius: 12px;
-  padding-top: 7px;
+  margin-top: 25px;
 }
 
 @media screen and (max-width: 1000px) {
@@ -184,4 +187,6 @@ button {
     max-height: fit-content;
   }
 }
+
+
 

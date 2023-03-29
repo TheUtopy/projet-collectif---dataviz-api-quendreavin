@@ -42,6 +42,7 @@ header {
 
 #center {
   display: flex;
+  flex-direction: column;
   flex-grow: 10;
 }
 
@@ -94,5 +95,60 @@ button {
   border: 2px solid rgb(0, 0, 0);
 }
 
+@media screen and (max-width: 1000px) {
 
+  header {
+    height: auto;
+    justify-content: auto;
+    flex-wrap: wrap-reverse;
+  }
+
+  #info-daujourdhui {
+    order: 1;
+  }
+
+  #date {
+    margin-bottom: 15px;
+  }
+
+  #center {
+    order: 3;
+  }
+
+  .selection-previsions {
+    margin-top: 20px;
+  }
+
+  #horloge-et-temps {
+    order: 2;
+  }
+
+  #temp-et-precip {
+    margin-top: 15px;
+  }
+
+  
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    justify-content: center;
+  }
+
+  #horloge-et-temps {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+  }
+
+  #horloge {
+    max-height: 50px;
+  }
+
+  button {
+    max-height: fit-content;
+  }
+}
 

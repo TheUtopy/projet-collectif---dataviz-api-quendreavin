@@ -29,8 +29,6 @@ function traitementDesDonnées(data, hourlyIndex = returnIndexOfDate(data, forma
     console.log(weathercode, temperature, precipitation)
     console.log(whichImageWeathercode(weathercode))
 
-
-
     document.getElementById("date").innerText = "Aujourd'hui nous sommes le " + getDateAndTime()[0]
     document.getElementById("lever_du_soleil").innerHTML = "Le soleil se lève à " + sunrise(data)[0] + " " + "heure " + sunrise(data)[1] + " " + "minutes"
     document.getElementById("coucher_du_soleil").innerHTML = "Il se couche à " + sunset(data)[0] + " " + "heure " + sunset(data)[1] + " " + "minutes"
@@ -265,7 +263,6 @@ function affichePrevisions() {
     const dateAndTime = [document.querySelector("#selection-jour").value, heure]
     getWeather("https://api.open-meteo.com/v1/meteofrance?latitude=47.22&longitude=-1.55&hourly=temperature_2m,precipitation,weathercode&daily=sunrise,sunset&timezone=Europe%2FBerlin")
         .then(data => {
-            console.log(heure)
             traitementDesDonnées(data, returnIndexOfDate(data, formatDateAndTime(dateAndTime)));
             isItDay(sunrise(data), sunset(data), heure)
         })
@@ -281,10 +278,4 @@ function resetPrevisions() {
             isItDay(sunrise(data), sunset(data), getDateAndTime()[1])
         })
         .catch(err => console.log("rejected\n", err.message))
-}
-
-function iconeSelonTemperature(temperature) {
-    if (temperature < 10) {
-        document.querySelector("#image-temperature").innerHTML = "<img src=\"images/.png\">"
-    }
 }

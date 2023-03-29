@@ -84,24 +84,25 @@ button {
   margin-top: 200px;
 }
 
-#temperatureImage {
-  width : 60px;
-  height: auto;
-}
-
 .thermometre{
-  width : 60px;
-  height: auto;
+  width : auto;
+  height: 120px;
+  float : left;
+  display : flex;
+
+}
+.blocTemperature{
+  display:flex;
+
 }
 
 #temperature{
   max-width: 320px;
-  border: 2px solid rgb(0, 0, 0);
-  border-radius: 12px;
   padding: 25px;
   background-color: #ffffff;
-  width: fit-content;
-}
+  display : flex;
+  margin-left: 0px;
+  }
 
 
 
